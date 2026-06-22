@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro de Requerimientos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="header-principal">
+        <div class="contenedor-logo">
+            <img src="logo.png" alt="Logo Centro de Requerimientos" id="logoPortal">
+            <h1 id="tituloPortal">Centro de Requerimientos</h1>
+        </div>
+    </header>
+
+    <main>
+        <section id="seccionLogin" aria-labelledby="tituloLogin">
+            <div class="contenedor-login">
+                <h2 id="tituloLogin">Inicio de Sesión</h2>
+
+                <form id="formLogin" autocomplete="off">
+                    <div class="grupo-campo">
+                        <label for="correo">Correo</label>
+                        <input type="email" id="correo" name="correo" required aria-required="true">
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="pin">PIN</label>
+                        <input type="password" id="pin" name="pin" required aria-required="true">
+                    </div>
+
+                    <button type="submit" id="btnLogin">Ingresar</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="seccionMensajes" aria-live="polite">
+            <div id="mensajeCarga" hidden>Cargando...</div>
+            <div id="mensajeExito" hidden></div>
+            <div id="mensajeError" hidden></div>
+        </section>
+
+        <section id="areaPrincipal" hidden aria-labelledby="tituloAreaPrincipal">
+            <header class="encabezado-usuario">
+                <h2 id="tituloAreaPrincipal">Portal de Solicitudes</h2>
+
+                <div class="acciones-superiores">
+                    <button type="button" id="btnActualizar">Actualizar</button>
+                    <button type="button" id="btnImprimir">Imprimir / Guardar PDF</button>
+                    <button type="button" id="btnCerrarSesion">Cerrar sesión</button>
+                </div>
+            </header>
+
+            <section id="seccionUsuario" aria-labelledby="tituloUsuario">
+                <h3 id="tituloUsuario">Usuario autenticado</h3>
+                <div id="datosUsuario">
+                    <p><strong>ID Usuario:</strong> <span id="usuarioIdUsuario"></span></p>
+                    <p><strong>Nombre:</strong> <span id="usuarioNombre"></span></p>
+                    <p><strong>Correo:</strong> <span id="usuarioCorreo"></span></p>
+                </div>
+            </section>
+
+            <section id="seccionFormulario" aria-labelledby="tituloFormulario">
+                <h3 id="tituloFormulario">Nueva Solicitud</h3>
+
+                <form id="formSolicitud">
+                    <div class="grupo-campo">
+                        <label for="tipoSolicitud">Tipo de Solicitud</label>
+                        <input type="text" id="tipoSolicitud" name="tipoSolicitud" required aria-required="true">
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="titulo">Título</label>
+                        <input type="text" id="titulo" name="titulo" required aria-required="true">
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="descripcion">Descripción</label>
+                        <textarea id="descripcion" name="descripcion" rows="5" required aria-required="true"></textarea>
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="prioridad">Prioridad</label>
+                        <select id="prioridad" name="prioridad" required aria-required="true">
+                            <option value="">Seleccione</option>
+                            <option value="Alta">Alta</option>
+                            <option value="Media">Media</option>
+                            <option value="Baja">Baja</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" id="btnRegistrarSolicitud">Registrar Solicitud</button>
+                </form>
+            </section>
+
+            <section id="seccionSolicitudes" aria-labelledby="tituloSolicitudes">
+                <h3 id="tituloSolicitudes">Mis Solicitudes</h3>
+
+                <div class="tabla-responsive">
+                    <table id="tablaSolicitudes">
+                        <thead>
+                            <tr>
+                                <th>ID Solicitud</th>
+                                <th>Fecha Registro</th>
+                                <th>Tipo Solicitud</th>
+                                <th>Título</th>
+                                <th>Descripción</th>
+                                <th>Prioridad</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaSolicitudesBody"></tbody>
+                    </table>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
